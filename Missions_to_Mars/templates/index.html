@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Mission to Mars</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="jumbotron text-center">
+                <h1><b>Mission to Mars</b></h1>
+                <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+            </div>      
+            <div>
+                <h1><b>Latest Mars News</b></h1>
+                <h2>{{ mars.news_title}}</h2>
+                <p>{{ mars.news }}</p>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-md-6">
+                    <h1 class="description-header"><b>Featured Mars Image</b></h1>
+                    <div class="text-left">
+                        <img src={{ mars.url_featured_image }}>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h1 class="description-header"><b>Mars Facts</b></h1>
+                    <div class="text-right">
+                    {{ mars.mars_facts | safe}}
+                    </div>
+                </div>
+            </div>
+                <h3 class="text-center"><b><i>Mars Hemispheres</i></b></h3>
+            </div> 
+            {% for hemisphere in mars.hemisphere %}
+            <div class="col-md-6">
+                <div class="thumbnail">
+                    <img src="{{hemisphere.img_url}}">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+
+</html>
